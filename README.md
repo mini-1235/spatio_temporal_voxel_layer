@@ -143,7 +143,10 @@ rgbd_obstacle_layer:
     clearing: true
     min_z: 0.1                   #default 0, meters
     max_z: 7.0                   #default 10, meters
+    asymmetric_fov_angle: True   #default false, if set to true, vertical fov start and end angle is used instead of vertical fov angle which assumes lidar to be symmetric
     vertical_fov_angle: 0.7      #default 0.7, radians
+    vertical_fov_start_angle: -0.12 #default -0.12, radians
+    vertical_fov_end_angle: 1.0 #default 1.0, radians
     horizontal_fov_angle: 1.04   #default 1.04, radians
     decay_acceleration: 1.       #default 0, 1/s^2. If laser scanner MUST be 0
     model_type: 0                #default 0 (depth camera). Use 1 for 3D Lidar

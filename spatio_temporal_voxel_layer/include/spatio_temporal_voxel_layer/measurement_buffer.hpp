@@ -98,7 +98,10 @@ public:
     const double & tf_tolerance,
     const double & min_d,
     const double & max_d,
+    const bool & asymmetric_fov_angle,
     const double & vFOV,
+    const double & vSFOV,
+    const double & vEFOV,
     const double & vFOVPadding,
     const double & hFOV,
     const double & decay_acceleration,
@@ -136,6 +139,8 @@ public:
   void SetVerticalFovPadding(const double & vertical_fov_padding);
   void SetHorizontalFovAngle(const double & horizontal_fov_angle);
   void SetVerticalFovAngle(const double & vertical_fov_angle);
+  void SetVerticalStartFovAngle(const double & vertical_start_fov_angle);
+  void SetVerticalEndFovAngle(const double & vertical_end_fov_angle);
 
   // State knoweldge if sensors are operating as expected
   bool UpdatedAtExpectedRate(void) const;
@@ -158,7 +163,9 @@ private:
   std::string _global_frame, _sensor_frame, _source_name, _topic_name;
   std::list<observation::MeasurementReading> _observation_list;
   double _min_obstacle_height, _max_obstacle_height, _obstacle_range, _tf_tolerance;
-  double _min_z, _max_z, _vertical_fov, _vertical_fov_padding, _horizontal_fov;
+  double _min_z, _max_z;
+  bool _asymmetric_fov_angle;
+  double _vertical_fov, _vertical_start_fov, _vertical_end_fov, _vertical_fov_padding, _horizontal_fov;
   double _decay_acceleration, _voxel_size;
   bool _marking, _clearing;
   Filters _filter;

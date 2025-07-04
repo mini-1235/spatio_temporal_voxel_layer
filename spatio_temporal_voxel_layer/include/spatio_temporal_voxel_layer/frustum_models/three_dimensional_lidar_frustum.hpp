@@ -53,7 +53,9 @@ class ThreeDimensionalLidarFrustum : public Frustum
 {
 public:
   ThreeDimensionalLidarFrustum(
+    const bool & asymmetric_fov_angle,
     const double & vFOV, const double & vFOVPadding,
+    const double & vSFOV, const double & vEFOV,
     const double & hFOV, const double & min_dist, const double & max_dist);
   virtual ~ThreeDimensionalLidarFrustum(void);
 
@@ -71,12 +73,12 @@ private:
   // utils to find useful frustum metadata
   double Dot(const VectorWithPt3D &, const openvdb::Vec3d &) const;
   double Dot(const VectorWithPt3D &, const Eigen::Vector3d &) const;
-
-  double _vFOV, _vFOVPadding, _hFOV, _min_d, _max_d;
+  bool _asymmetric_fov_angle;
+  double _vFOV, _vSFOV, _vEFOV, _vFOVPadding, _hFOV, _min_d, _max_d;
   double _hFOVhalf;
   double _min_d_squared, _max_d_squared;
-  double _tan_vFOVhalf;
-  double _tan_vFOVhalf_squared;
+  double _tan_vFOVhalf, _tan_vSFOV, _tan_vEFOV;
+  double _tan_vFOVhalf_squared, _tan_vSFOV_squared, _tan_vEFOV_squared;
   Eigen::Vector3d _position;
   Eigen::Quaterniond _orientation;
   Eigen::Quaterniond _orientation_conjugate;
